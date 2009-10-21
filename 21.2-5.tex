@@ -1,4 +1,5 @@
-When \proc{Union} is called, we Splice-in \id{B} after \id{A}'s first node.
-While traversing \id{B}, we set the representative for each node to the
-representative of \id{A}. Once the end of \id{B} is reached, we set next to \id{A}'s
-second node (which could be \const{NIL}).
+When \proc{Union} is called, we Splice-in \id{B} after \id{A}'s first
+node.  While traversing \id{B}, we set the representative for each
+node to the representative of \id{A}. Once we reach the last node of
+\id{B} is reached, we also set \id{next} to \id{A}'s second node
+(which could be \const{NIL}).
