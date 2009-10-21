@@ -1,19 +1,6 @@
-\input eplain.tex
-
-% paper size and margins
-%% Use A4
-\paperwidth = 8.3truein
-\paperheight = 11.7truein
-
-\topmargin = 1truein
-\bottommargin = 1truein
-\rightmargin = 1truein
-\leftmargin = 1truein
-
-\def\solinput#1{
+\newcommand\solinput[1]{
   \bigskip{}
   \leftline{{\bf #1}}
   \bigskip{}
-  \input #1.tex
+  \input{#1} % Use input so that it doesn't start a new line
 }
-

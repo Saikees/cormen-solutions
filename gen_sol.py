@@ -6,23 +6,56 @@ def ls():
 
 outfile = 'solutions.tex'
 
-print ls()
+# A line of latex code
+def ll(s):
+	return s + '\n'
+
+# Generate prologue for latex document
+def gen_prologue(f):
+	f.write(ll('\\documentclass[a4paper,notitle]{article}'))
+	f.write(ll('\\author{}'))
+	f.write(ll('\\date{}'))
+	f.write(ll('\\title{}'))
+	f.write(ll('\\include{defs/basedef}'))
+	f.write(ll('\\usepackage[margin=1truein]{geometry}'))
+
+
+# For consistency
+def gen_epilogue(f):
+	pass
+
+# Start document content
+def start_doc(f):
+	f.write(ll('\\begin{document}'))
+
+# End document
+def end_doc(f):
+	f.write(ll('\\end{document}'))
+
+def include_sol(f, sol):
+	f.write(ll('\\solinput{%s}' % (sol,)))
+
+
+# Now the processing part of algorithm
 
 # Get all tex files
 tex_files = filter(lambda x: re.search("\.tex$", x), ls())
-print tex_files
 if outfile in tex_files:
 	tex_files.remove(outfile) # Don't include any previous outputs
 
 # Remove the .tex suffix
 tex_files = map(lambda x: re.sub("\.tex", "", x), tex_files)
-print tex_files
 
 f = open(outfile, 'w')
 
-f.write('\\input defs/basedef.tex\n')
+gen_prologue(f)
+
+start_doc(f)
+
 # Include input statement for each file
 for i in tex_files:
-	f.write('\\solinput{%s}\n' % (i,))
+	include_sol(f, i)
 
-f.write('\\bye\n')
+end_doc(f)
+
+gen_epilogue(f)
