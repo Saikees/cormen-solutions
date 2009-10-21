@@ -1,7 +1,7 @@
 This repo contains solutions to exercises in Introduction to algorithms, CLRS. 
 
 == How to work with the repo
-o Clone the repo (which you've already done if you are reading this).
+o Clone the repo (which you've probably done if you are reading this offline).
 o Start a new topic branch. For example to add solutions to Binary search tree
   # git branch bst master
 o Checkout the newly created branch.
