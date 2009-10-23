@@ -1,9 +1,16 @@
 This repo contains solutions to exercises in Introduction to algorithms, CLRS. 
 
+== Some basic git concepts
+git keeps track of changes to files. This allows us to easily
+backtrack to previous "good" revisions if we've made any mistake. git
+also allows us to "branch" content in the sense that content in one
+branch is independent of another. The default branch is called
+"master" and new branches can be created using "git branch".
+
 == How to work with the repo
 o Clone the repo (which you've probably done if you are reading this offline).
 o Start a new topic branch. For example to add solutions to Binary search tree
-  # git branch bst master
+  # git branch bst master # Creates a new branch bst from master
 o Checkout the newly created branch.
   # git checkout bst
 o Add solutions (Use excercise-number.tex for filenames)
@@ -17,7 +24,7 @@ o Switch to master branch
 o Delete your experimental branch
   # git branch -D bst
 o To keep your master up-to-date
-  # git pull origin
+  # git pull origin master
 
 NOTE: - Don't do any editing while master branch is checked out. This
 branch should only be used to pull upstream changes.
