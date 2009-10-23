@@ -7,7 +7,7 @@ o Start a new topic branch. For example to add solutions to Binary search tree
 o Checkout the newly created branch.
   # git checkout bst
 o Add solutions (Use excercise-number.tex for filenames)
-o Commit
+o Commit (do this periodically so that you can backtrack)
   # git commit
 o Format patch to merge to main tree
   # git format-patch master
@@ -15,9 +15,20 @@ o Send patch files to baluks@gmail.com
 o Switch to master branch
   # git checkout master
 o Delete your experimental branch
-  # git branch -d bst
+  # git branch -D bst
 o To keep your master up-to-date
-  # git pull
+  # git pull origin
 
 NOTE: - Don't do any editing while master branch is checked out. This
 branch should only be used to pull upstream changes.
+
+== Submitting patches
+After executing "git format-patch ..." there will be patch files named 0001-..patch 0002-...patch and so on.
+Send this to the given mail-id as attachments.
+
+== Generating solutions
+Once you've pulled the repository. Execute the following commands
+  # python gen_sol.py
+  # export TEXINPUTS=./defs/:
+  # latex solutions.tex
+A solutions.dvi file will be generated which can be viewed.
