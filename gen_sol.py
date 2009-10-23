@@ -32,8 +32,29 @@ def start_doc(f):
 def end_doc(f):
 	f.write(ll('\\end{document}'))
 
+# Compare two problem numbers and decide which comes first
+def cormen_cmp(a, b):
+	# A pattern for problem numbers. Matches 17.2-3 or 17-2
+	prob_pat = "(\d+)([\.-])(\d+)(?:[-](\d+))?"
+	(achap, ap, asec, anum) = re.search(prob_pat, a).groups()
+	(bchap, bp, bsec, bnum) = re.search(prob_pat, b).groups()
+
+	(achap, asec, anum) = map(int, (achap, asec, anum))
+	(bchap, bsec, bnum) = map(int, (bchap, bsec, bnum))
+	if achap - bchap != 0:
+		return achap - bchap
+	# Not from the same chapter
+	if ap != bp:
+		if ap == ".": return -1 # a is excercise, b is problem
+		else: return 1 # a is problem, b is excercise
+	# Note:- If a and b are problems and from same chapter if is true
+	if asec - bsec != 0:
+		return asec - bsec
+	return anum - bnum
+
 def include_sol(f, sol):
 	f.write(ll('\\solinput{%s}' % (sol,)))
+	f.write(ll('')) # A blank line to start next solution in another line
 
 
 # Now the processing part of algorithm
@@ -51,6 +72,8 @@ f = open(outfile, 'w')
 gen_prologue(f)
 
 start_doc(f)
+
+tex_files.sort(cormen_cmp)
 
 # Include input statement for each file
 for i in tex_files:

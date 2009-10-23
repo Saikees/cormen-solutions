@@ -1,0 +1,28 @@
+\newcommand\phidash[1]{\ensuremath{\phi\ '(#1)}}
+\newcommand\phif[1]{\ensuremath{\phi\ (#1)}}
+\newcommand\amcost{\ensuremath{\hat{c}_i}}
+\newcommand\accost{\ensuremath{c_i}}
+
+Let
+
+\begin{displaymath}
+\phidash{D_i} = \phif{D_i} - \phif{D_0}
+\end{displaymath}
+
+then
+\begin{eqnarray*}
+\phidash{D_0} &=& 0 \\
+\phidash{D_i} &\geq& 0 \ (\because\ \phif{D_i} \geq\ \phif{D_0})
+\end{eqnarray*}
+
+Now the amortized cost using \phidash{D} is,
+
+\begin{eqnarray*}
+\sum_{i=1}^{n} \amcost &=& \sum_{i=1}^{n} \accost + \phidash{D_n} -
+\phidash{D_0} \\
+&=& \sum_{i=1}^{n} \accost + \phif{D_n} - \phif{D_0} - 
+( \phif{D_0} - \phif{D_0}) \\
+&=& \sum_{i=1}^{n} \accost + \phif{D_n} - \phif{D_0}
+\end{eqnarray*}
+
+which is same as the amortized cost using \phif{D}.
