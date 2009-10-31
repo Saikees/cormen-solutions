@@ -1,0 +1,9 @@
+The difficulty here is that it takes time proportional to the length 
+of the string to compare two strings. If each string has an average
+length of $c$, then searching the list will take $cn$ time.
+
+The difficulty can be avoided by first comparing the hash values
+before comparing the string. By the property of hash functions only a
+small fraction of keys will map to the same hash value. We compare
+strings only if the comparison of hash values yields a match. So the
+number of string comparisons can be reduced.
